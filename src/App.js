@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {
+  BrowserRouter,
+  Route,
+  Routes
+} from "react-router-dom";
+import Home from "./components/0-home/Home.js";
+import Header from './components/Header.js';
+import AboutMe from "./components/1-about-me/AboutMe.js";
+import Resume from "./components/2-resume/Resume.js";
+import Projects from "./components/3-projects/Projects.js";
+import ContactMe from "./components/4-contact-me/ContactMe.js";
 
 function App() {
+  const navItems = [
+    {
+        path: "/",
+        name: "Home"
+    },
+    {
+        path: "/aboutme",
+        name: "About Me"
+    },
+    {
+        path: "/resume",
+        name: "Resume"
+    },
+    {
+        path: "/projects",
+        name: "Projects"
+    },
+    {
+        path: "/contactme",
+        name: "Contact Me"
+    }
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <BrowserRouter>
+      <Header navItems={navItems}/>
+          <Routes>
+            <Route path="/" element={<Home navItems={navItems}/>} />
+            <Route path="/aboutme" element={<AboutMe/>} />
+            <Route path="/resume" element={<Resume/>} />
+            <Route path="/projects" element={<Projects/>} />
+            <Route path="/contactme" element={<ContactMe/>} />
+          </Routes>
+        </BrowserRouter>
+      </div>
   );
 }
 
