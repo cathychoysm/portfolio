@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "@fontsource-variable/montserrat";
-import "@fontsource/paytone-one/400.css";
+import "@fontsource/volkhov";
 
 const fonts = {
   body: "Montserrat Variable",
-  heading: "Paytone One"
+  heading: "Volkhov"
 }
 
 const colors = {
@@ -19,7 +19,8 @@ const colors = {
     100: "#EDE4F3",
     200: "#A985A9",
     300: "#866986",
-    400: "#493849"
+    400: "#493849",
+    500: "#2C202C"
   },
   gray: {
     100: "DBDADB",

@@ -2232,10 +2232,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource-variable/montserrat/-/montserrat-5.0.17.tgz#6e7b2d6a29ebf0cbd891a824698e299f8fad05e9"
   integrity sha512-kRPFY+sLUPE4fGTkuHu6phebYTwizsbGVIvqYa2vysRLPKUxwoiy1lb9Z4Qul8qoVspXnl0b9zA5LSn0scD9vA==
 
-"@fontsource/paytone-one@^5.0.18":
-  version "5.0.18"
-  resolved "https://registry.yarnpkg.com/@fontsource/paytone-one/-/paytone-one-5.0.18.tgz#0cfdf6cea47dd71df72a2fc1b808f5e7d6a0a60f"
-  integrity sha512-EqwuntZtcemrGD3P2++Rn29X6f4aG/A/NZw+vlh+QWJNjNRXqm8K6Qi/apngdincCptsK7802eM9U/AKl3iGmA==
+"@fontsource/volkhov@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/volkhov/-/volkhov-5.0.8.tgz#7fcf7222c8a6798e3b57f366edc94a7063b8d7f5"
+  integrity sha512-80AF/JbnKnJtKg+EkCitiNq46dp022UOS0JfSBn89SA27UKPyoO7M2L3NwHTpdZ7r+eEtsuDVwzWGqJabMYrTg==
 
 "@humanwhocodes/config-array@^0.11.13":
   version "0.11.13"

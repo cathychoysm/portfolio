@@ -9,7 +9,7 @@ import {
     VStack,
     keyframes,
 } from "@chakra-ui/react";
-import ProfilePic from "../../images/profile_pic.jpg";
+import CartoonGirl from "../../images/cartoon_girl.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 // import { useState } from "react";
@@ -126,15 +126,16 @@ export default function Home(props) {
                         }}
                         onClick={clickCard}>
                             <Image
-                                src={ProfilePic}
+                                src={CartoonGirl}
                                 alt="Profile Pic"
                                 borderRadius="full"
                                 objectFit="cover"
                                 boxSize="40%"/>
-                            <VStack paddingLeft="5%" gap="2vh" alignItems="flex-start">
+                            <VStack paddingLeft="5%" gap="1.5vw" alignItems="flex-start">
                                 <Heading
                                     fontFamily="heading"
-                                    fontSize="clamp(21px, 3.5vw, 40px)"
+                                    fontWeight="700"
+                                    fontSize="clamp(21px, 4vw, 40px)"
                                     color="purple.400"
                                     textShadow="2px 2px #EDE4F3">
                                         Hi! I'm Cathy.
