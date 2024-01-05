@@ -1,6 +1,7 @@
 import {
     Box,
     Card,
+    Grid,
     HStack,
     Heading,
     Image,
@@ -25,14 +26,11 @@ export default function Home(props) {
 
     // Toggle Menu Animation
     const menu = keyframes`
-    from {
-        transform: translateY(30px);
-    }
-    to {
-        transform: translateY(0);
-    }
+        0% { transform: translateY(50px); }
+        50% { transform: translateY(-12px); }
+        100% { transform: translateY(0); }
     `
-    const menuOut = `${menu} 1 1s ease`;
+    const menuOut = `${menu} 1 0.5s ease`;
 
     const [ showMenu, setShowMenu ] = useState("hidden");
     const [ showClickMe, setShowClickMe ] = useState("visible");
@@ -62,8 +60,6 @@ export default function Home(props) {
                     borderRadius="full"
                     width="clamp(50px, 9vw, 120px)"
                     height="clamp(50px, 9vw, 120px)"
-                    position="relative"
-                    top="10px"
                     display="flex"
                     alignItems="center">
                         <Text
@@ -79,7 +75,16 @@ export default function Home(props) {
     })
 
     return(
-        <Box
+        <Grid
+            templateAreas={`
+                "popup"
+                "card"
+            `}
+            alignItems="center"
+            alignContent="center"
+            justifyItems="center"
+            justifyContent="center"
+            gap="20px"
             bg="linear-gradient(
                 to bottom right,
                 #FFE5E5,
@@ -89,13 +94,8 @@ export default function Home(props) {
             bgSize="150% 150%"
             height="95vh"
             animation={bgAnimation}>
-                <VStack
-                    position="relative"
-                    top="45%"
-                    left="50%"
-                    transform="translate(-50%, -50%)"
-                    >
                     <HStack
+                        gridArea={"popup"}
                         width="clamp(320px, 70%, 800px)"
                         justifyContent="space-between"
                         visibility={showMenu}
@@ -103,12 +103,15 @@ export default function Home(props) {
                         {navList}
                     </HStack>
                     <Text
+                        gridArea={"popup"}
+                        alignSelf="flex-end"
                         color="purple.400"
                         fontSize="clamp(10px, 1.5vw, 25px)"
                         textShadow="2px 2px 3px #A985A9"
                         visibility={showClickMe}>
                             Click me to start exploring!</Text>
                     <Card
+                        gridArea={"card"}
                         direction="row"
                         alignItems="center"
                         gap="5%"
@@ -126,6 +129,7 @@ export default function Home(props) {
                                 src={ProfilePic}
                                 alt="Profile Pic"
                                 borderRadius="full"
+                                objectFit="cover"
                                 boxSize="40%"/>
                             <VStack paddingLeft="5%" gap="2vh" alignItems="flex-start">
                                 <Heading
@@ -143,7 +147,6 @@ export default function Home(props) {
                                 </Text>
                             </VStack>
                     </Card>
-                </VStack>
-        </Box>
+        </Grid>
     )
 }
