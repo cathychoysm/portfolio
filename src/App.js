@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Home from "./components/0-home/Home.js";
 import Header from './components/Header.js';
+import SocialMedia from "./components/SocialMedia.js";
 import AboutMe from "./components/1-about-me/AboutMe.js";
 import Resume from "./components/2-resume/Resume.js";
 import Projects from "./components/3-projects/Projects.js";
@@ -39,6 +40,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
       <Header navItems={navItems}/>
+      <SocialMedia/>
           <Routes>
             <Route path="/" element={<Home navItems={navItems}/>} />
             <Route path="/aboutme" element={<AboutMe/>} />

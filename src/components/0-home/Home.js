@@ -12,7 +12,6 @@ import {
 import CartoonGirl from "../../images/cartoon_girl.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// import { useState } from "react";
 
 
 export default function Home(props) {
@@ -21,15 +20,15 @@ export default function Home(props) {
         0% { background-position: 0% 2%; }
         50% { background-position: 100% 99%; }
         100% { background-position: 0% 2%; }
-    `
-    const bgAnimation = `${movingColour} infinite 7s ease`
+    `;
+    const bgAnimation = `${movingColour} infinite 7s ease`;
 
     // Toggle Menu Animation
     const menu = keyframes`
         0% { transform: translateY(50px); }
         50% { transform: translateY(-12px); }
         100% { transform: translateY(0); }
-    `
+    `;
     const menuOut = `${menu} 1 0.5s ease`;
 
     const [ showMenu, setShowMenu ] = useState("hidden");
@@ -40,7 +39,7 @@ export default function Home(props) {
         showMenu === "hidden" ? setShowMenu("visible") : setShowMenu("hidden");
         showMenuAnimation === undefined ? setShowMenuAnimation(menuOut) : setShowMenuAnimation(undefined);
         showClickMe === "hidden" ? setShowClickMe("visible") : setShowClickMe("hidden");
-    }
+    };
 
     const navList = props.navItems.map(navItem => {
         return (
@@ -58,21 +57,22 @@ export default function Home(props) {
                         2px 2px 20px #FFF;
                         "
                     borderRadius="full"
-                    width="clamp(50px, 9vw, 120px)"
-                    height="clamp(50px, 9vw, 120px)"
+                    width="clamp(50px, 9vw, 100px)"
+                    height="clamp(50px, 9vw, 100px)"
                     display="flex"
-                    alignItems="center">
+                    alignItems="center"
+                    _hover={{ transform: "translateY(-10px)" }}>
                         <Text
                             width="100%"
-                            fontSize="clamp(10px, 1.5vw, 20px)"
+                            fontSize="clamp(10px, 1.5vw, 16px)"
                             textAlign="center"
                             color="purple.400">
                                 {navItem.name}
                         </Text>
                 </Box>
             </Link>
-        )
-    })
+        );
+    });
 
     return(
         <Grid
@@ -149,5 +149,5 @@ export default function Home(props) {
                             </VStack>
                     </Card>
         </Grid>
-    )
-}
+    );
+};

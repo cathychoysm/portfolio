@@ -1,80 +1,94 @@
 import { Link } from "react-router-dom";
-import { Divider, HStack, Image, ListItem, UnorderedList } from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    Divider,
+    Fade,
+    Grid,
+    HStack,
+    Image,
+    ListItem,
+    Stack,
+    UnorderedList,
+    useDisclosure } from "@chakra-ui/react";
 import Logo from "../images/cathychoy_logo.svg";
-import MenuIcon from "../images/menu_icon.svg";
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header(props) {
+    const { isOpen, onToggle } = useDisclosure();
 
     const navListWithClass = props.navItems.map(navItem => {
         return (
-            <Link to={navItem.path} className="Nav-Items">
-                {navItem.name}
+            <Link to={ navItem.path } className="Nav-Items">
+                { navItem.name }
             </Link>
-        )
+        );
     });
 
     const navListWithoutClass = props.navItems.map(navItem => {
         return (
-            <>
-                <ListItem key={navItem.path} padding="5px">
-                    <Link to={navItem.path}>{navItem.name}</Link>
-                </ListItem>
-                <Divider color="purple.100"/>
-            </>
-        )
+            <ListItem key={ navItem.path } paddingY="0.8vh" borderBottom="1px solid #EDE4F3" _last={{ border: "none"}}>
+                <Link to={ navItem.path } onClick={ onToggle }>{ navItem.name }</Link>
+            </ListItem>
+        );
     });
 
-    const [showMenu, setShowMenu] = useState("hidden");
-
-    const toggleMenu = () => {
-        showMenu === "hidden"? setShowMenu("visible") : setShowMenu("hidden")
-    }
-
     return (
-        <>
+        <Grid
+            templateColumns="100vw"
+            templateAreas={ `"box"` }
+            alignItems="center"
+            bgColor="purple.300"
+            height="max(40px, 5vh)"
+            >
             <HStack
-                bgColor="purple.300"
+                gridArea={ "box" }
                 color="white"
-                height="max(40px, 5vh)"
                 alignItems="center"
                 justifyContent="center"
                 gap="30px">
                     <Link to="/">
                         <Image
-                        src={Logo}
+                        src={ Logo }
                         alt="Logo"
+                        minHeight="35px"
                         height="5vh"
                         position="relative"
                         top="-0.3vh"/>
                     </Link>
-                    {navListWithClass}
+                    { navListWithClass }
             </HStack>
-            <Image
-                src={MenuIcon}
-                alt="Menu Icon"
-                position="absolute"
-                top="1vh"
-                right="1vh"
-                height="3.5vh"
-                width="3.5vh"
-                display={{ base: "initial", md: "none" }}
-                onClick={toggleMenu}/>
-            <UnorderedList
-                position="absolute"
-                right="0px"
-                width="150px"
-                margin="1px"
-                spacing="5px"
-                styleType="none"
-                textAlign="center"
-                fontSize="max(10px, 3vw)"
-                bgColor="purple.300"
-                color="purple.100"
-                display={{ base: "initial", md: "none" }}
-                visibility={showMenu}>
-                    {navListWithoutClass}
-            </UnorderedList>
-        </>
-    )
-}
+            <Button
+                gridArea={ "box" }
+                justifySelf="flex-end"
+                marginX="max(15px, 2vw)"
+                display={{ md: "none" }}
+                onClick={ onToggle }>
+                    <FontAwesomeIcon
+                        icon={ faBars }
+                        style={{ color: "white", width: "100%", }}
+                        size="2xl"
+                        alt="Menu Icon"
+                        />
+            </Button>
+            <Fade in={ isOpen }>
+                <Stack
+                    bg="purple.200"
+                    display={{ md: "none" }}
+                    >
+                <UnorderedList
+                    styleType="none"
+                    textAlign="center"
+                    fontSize="max(10px, 3vw)"
+                    color="purple.100"
+                    marginX="20px"
+                    padding="8px"
+                    >
+                        { navListWithoutClass }
+                </UnorderedList>
+                </Stack>
+            </Fade>
+        </Grid>
+    );
+};
