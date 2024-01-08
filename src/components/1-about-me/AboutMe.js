@@ -1,8 +1,29 @@
 import ProfilePic from "../../images/profile_pic.jpg"
-import { aboutParagraph } from "../../data/AboutParagraph.js";
-import { Center, Image, Text, VStack } from "@chakra-ui/react";
+import { aboutParagraph, languages } from "../../data/AboutMeData.js";
+import {
+    Card,
+    CardBody,
+    CardHeader,
+    Center,
+    Heading,
+    Image,
+    List,
+    ListIcon,
+    ListItem,
+    VStack
+} from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment } from "@fortawesome/free-regular-svg-icons";
 
 export default function AboutMe() {
+    const languageItems = languages.map(language => {
+        return (
+            <ListItem>
+                <ListIcon><FontAwesomeIcon icon={ faComment }/></ListIcon>
+                { language }
+            </ListItem>
+        )
+    })
 
     return (
         <VStack
@@ -17,20 +38,41 @@ export default function AboutMe() {
             padding="3vh"
             gap="3vh">
                 <Center
-                    bg="linear-gradient(to bottom right, #A985A9, #493849)" shadow="inset 1px 1px 5px white, 5px 5px 5px #866986"
+                    bg="linear-gradient(to bottom right, #A985A9, #5B445B)" shadow="inset 1px 1px 3px white, 5px 5px 5px #866986"
                     width="clamp(100px, 70%, 800px)" height="5vh"
-                    borderRadius="15px"
+                    borderRadius={{ base: "10px", md: "15px" }}
                     fontFamily="heading" fontSize="clamp(18px, 2.5vw, 28px)" color="white"
                     >
                         About Me
                 </Center>
                 <Image src={ProfilePic} width="clamp(15px, 35%, 450px)" borderRadius="full" border="8px dotted #EDE4F3" shadow="5px 5px 5px #866986"/>
-                <Text
+                <Card
                     bgColor="purple.100" shadow="inset 1px 1px 5px white, 5px 5px 5px #866986"
                     width="clamp(100px, 80%, 900px)"
-                    padding="50px" borderRadius="15px"
-                    whiteSpace="break-spaces"
-                    fontSize="clamp(13px, 2vw, 20px)">{ aboutParagraph }</Text>
+                    padding="50px" borderRadius="15px">
+                        <CardHeader>
+                            <Heading fontSize="clamp(15px, 2vw, 23px)">More about me...</Heading>
+                        </CardHeader>
+                        <CardBody fontSize="clamp(13px, 1.8vw, 20px)" whiteSpace="break-spaces">
+                            { aboutParagraph }
+                        </CardBody>
+                </Card>
+                <Card
+                    bgColor="purple.100" shadow="inset 1px 1px 5px white, 5px 5px 5px #866986"
+                    width="clamp(100px, 80%, 900px)"
+                    padding="50px" borderRadius="15px">
+                        <CardHeader>
+                            <Heading fontSize="clamp(15px, 2vw, 23px)">Languages I speak...</Heading>
+                        </CardHeader>
+                        <CardBody fontSize="clamp(13px, 1.8vw, 20px)">
+                            <List
+                                display="grid"
+                                gridTemplateColumns="repeat(3, 1fr)"
+                                justifyContent="space-between">
+                                    { languageItems }
+                            </List>
+                        </CardBody>
+                </Card>
         </VStack>
     )
 }

@@ -83,7 +83,7 @@ export default function Home(props) {
             alignItems="center"
             alignContent="center"
             justifyItems="center"
-            justifyContent="center"
+            // justifyContent="center"
             gap="20px"
             bg="linear-gradient(
                 to bottom right,

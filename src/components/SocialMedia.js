@@ -7,6 +7,7 @@ import { Link, Stack } from "@chakra-ui/react";
 export default function SocialMedia() {
     return (
         <Stack
+            style={{ zIndex: 1000}}
             direction={{base: "row", md: "column"}}
             alignItems="center"
             position="fixed"

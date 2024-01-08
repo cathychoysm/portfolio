@@ -1,23 +1,19 @@
 import { Link } from "react-router-dom";
 import {
-    Box,
-    Button,
-    Divider,
-    Fade,
     Grid,
     HStack,
+    IconButton,
     Image,
-    ListItem,
-    Stack,
-    UnorderedList,
-    useDisclosure } from "@chakra-ui/react";
-import Logo from "../images/cathychoy_logo.svg";
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuList
+} from "@chakra-ui/react";
+import Logo from "../images/logo_cathychoy.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header(props) {
-    const { isOpen, onToggle } = useDisclosure();
-
     const navListWithClass = props.navItems.map(navItem => {
         return (
             <Link to={ navItem.path } className="Nav-Items">
@@ -28,9 +24,16 @@ export default function Header(props) {
 
     const navListWithoutClass = props.navItems.map(navItem => {
         return (
-            <ListItem key={ navItem.path } paddingY="0.8vh" borderBottom="1px solid #EDE4F3" _last={{ border: "none"}}>
-                <Link to={ navItem.path } onClick={ onToggle }>{ navItem.name }</Link>
-            </ListItem>
+            <MenuItem
+                as={ Link }
+                to={ navItem.path }
+                key={ navItem.path }
+                paddingY="0.8vh"
+                borderBottom="1px solid #EDE4F3"
+                _last={{ border: "none"}}
+                _hover={{ color: "purple.100", fontWeight: "600" }}>
+                    { navItem.name }
+            </MenuItem>
         );
     });
 
@@ -59,36 +62,33 @@ export default function Header(props) {
                     </Link>
                     { navListWithClass }
             </HStack>
-            <Button
-                gridArea={ "box" }
-                justifySelf="flex-end"
-                marginX="max(15px, 2vw)"
-                display={{ md: "none" }}
-                onClick={ onToggle }>
-                    <FontAwesomeIcon
+            <Menu autoSelect={false}>
+                <MenuButton
+                    as={ IconButton }
+                    aria-label="Menu"
+                    gridArea={ "box" }
+                    justifySelf="flex-end"
+                    marginX="max(15px, 2vw)"
+                    display={{ md: "none" }}
+                    icon={ <FontAwesomeIcon
                         icon={ faBars }
                         style={{ color: "white", width: "100%", }}
                         size="2xl"
                         alt="Menu Icon"
-                        />
-            </Button>
-            <Fade in={ isOpen }>
-                <Stack
+                        marginX="max(15px, 2vw)"
+                        display={{ md: "none" }}
+                        /> }
+                    />
+                <MenuList
                     bg="purple.200"
+                    color="purple.300"
+                    fontSize="max(10px, 2.5vw)"
+                    padding="5px"
                     display={{ md: "none" }}
                     >
-                <UnorderedList
-                    styleType="none"
-                    textAlign="center"
-                    fontSize="max(10px, 3vw)"
-                    color="purple.100"
-                    marginX="20px"
-                    padding="8px"
-                    >
                         { navListWithoutClass }
-                </UnorderedList>
-                </Stack>
-            </Fade>
+                </MenuList>
+            </Menu>
         </Grid>
     );
 };
