@@ -9,7 +9,7 @@ import {
     VStack,
     keyframes,
 } from "@chakra-ui/react";
-import CartoonGirl from "../../images/cartoon_girl.png";
+import CartoonGirl from "../images/cartoon_girl.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -83,7 +83,6 @@ export default function Home(props) {
             alignItems="center"
             alignContent="center"
             justifyItems="center"
-            // justifyContent="center"
             gap="20px"
             bg="linear-gradient(
                 to bottom right,
@@ -92,7 +91,7 @@ export default function Home(props) {
                 #AC87C5,
                 #756AB6)"
             bgSize="150% 150%"
-            height="95vh"
+            minHeight="95vh"
             animation={bgAnimation}>
                     <HStack
                         gridArea={"popup"}

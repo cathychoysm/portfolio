@@ -3,8 +3,10 @@ import {
     employmentHistory,
     education,
     certificates
-} from "../../data/ResumeData";
+} from "../data/ResumeData";
 import {
+    Box,
+    Button,
     Card,
     CardBody,
     CardHeader,
@@ -20,6 +22,7 @@ import {
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function Resume() {
     const technologiesItems = technologies.map(technology => {
@@ -37,7 +40,7 @@ export default function Resume() {
 
     const employmentItems = employmentHistory.map(employment => {
         return (
-            <ListItem>
+            <ListItem key={ `${employment.company} - ${employment.position}`}>
                 <Grid
                     templateColumns="auto 2fr auto"
                     templateAreas={`
@@ -85,15 +88,22 @@ export default function Resume() {
 
     const certItems = certificates.map(cert => {
         return (
-            <ListItem key={cert.certificate} fontSize="clamp(12px, 1.5vw, 20px)">
+            <ListItem key={ cert.certificate } fontSize="clamp(12px, 1.5vw, 20px)">
                 <Text fontWeight={600}>{ cert.certificate }</Text>
                 <Text fontStyle="italic">{ cert.issuedBy }</Text>
+                <Button
+                    as="a" href={ cert.credential } isExternal
+                    colorScheme="blackAlpha"
+                    borderRadius="full" height="100%" paddingX="7px"
+                    fontSize="80%">
+                    See Credential<FontAwesomeIcon icon={ faArrowUpRightFromSquare } style={{ "padding-left": "5px"}}/>
+                </Button>
             </ListItem>
         )
     })
 
     return (
-        <VStack
+        <Box
             bg="linear-gradient(
                 to bottom right,
                 #FFE5E5,
@@ -181,12 +191,12 @@ export default function Resume() {
                             <Heading fontSize="clamp(15px, 2vw, 23px)">Certificates</Heading>
                         </CardHeader>
                         <CardBody>
-                            <List>
+                            <List spacing="2vh">
                                 { certItems }
                             </List>
                         </CardBody>
                     </Card>
             </Grid>
-        </VStack>
+        </Box>
     )
 }

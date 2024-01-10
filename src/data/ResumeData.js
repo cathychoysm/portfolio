@@ -133,10 +133,12 @@ Minor in Japanese Studies`
 export const certificates = [
     {
         certificate: "Meta Front-End Developer Certificate",
-        issuedBy: "Meta"
+        issuedBy: "Meta",
+        credential: "https://www.credly.com/badges/190d6383-4bf8-41a0-a430-1d5a4bcf2ab2"
     },
     {
         certificate: "Google Data Analytics Certificate",
-        issuedBy: "Google"
+        issuedBy: "Google",
+        credential: "https://www.credly.com/badges/968d7ead-44ac-4b09-9f3a-8576130a3cdb/linked_in_profile"
     }
 ];

@@ -1,5 +1,5 @@
-import ProfilePic from "../../images/profile_pic.jpg"
-import { aboutParagraph, languages } from "../../data/AboutMeData.js";
+import ProfilePic from "../images/profile_pic.jpg"
+import { aboutParagraph, languages } from "../data/AboutMeData.js";
 import {
     Card,
     CardBody,
@@ -18,7 +18,7 @@ import { faComment } from "@fortawesome/free-regular-svg-icons";
 export default function AboutMe() {
     const languageItems = languages.map(language => {
         return (
-            <ListItem>
+            <ListItem key={ language }>
                 <ListIcon><FontAwesomeIcon icon={ faComment }/></ListIcon>
                 { language }
             </ListItem>
@@ -34,7 +34,6 @@ export default function AboutMe() {
                 #AC87C5,
                 #756AB6)"
             minHeight="95vh"
-            height="100%"
             padding="3vh"
             gap="3vh">
                 <Center
@@ -48,8 +47,7 @@ export default function AboutMe() {
                 <Image src={ProfilePic} width="clamp(15px, 35%, 450px)" borderRadius="full" border="8px dotted #EDE4F3" shadow="5px 5px 5px #866986"/>
                 <Card
                     bgColor="purple.100" shadow="inset 1px 1px 5px white, 5px 5px 5px #866986"
-                    width="clamp(100px, 80%, 900px)"
-                    padding="50px" borderRadius="15px">
+                    width="clamp(100px, 80%, 900px)" padding="1vw" borderRadius="15px">
                         <CardHeader>
                             <Heading fontSize="clamp(15px, 2vw, 23px)">More about me...</Heading>
                         </CardHeader>
@@ -59,15 +57,15 @@ export default function AboutMe() {
                 </Card>
                 <Card
                     bgColor="purple.100" shadow="inset 1px 1px 5px white, 5px 5px 5px #866986"
-                    width="clamp(100px, 80%, 900px)"
-                    padding="50px" borderRadius="15px">
+                    width="clamp(100px, 80%, 900px)" padding="1vw" borderRadius="15px">
                         <CardHeader>
                             <Heading fontSize="clamp(15px, 2vw, 23px)">Languages I speak...</Heading>
                         </CardHeader>
                         <CardBody fontSize="clamp(13px, 1.8vw, 20px)">
                             <List
                                 display="grid"
-                                gridTemplateColumns="repeat(3, 1fr)"
+                                gridTemplateColumns="repeat(2, 1fr)"
+                                gap="clamp(10px, 1vw, 30px)"
                                 justifyContent="space-between">
                                     { languageItems }
                             </List>
