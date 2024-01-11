@@ -91,7 +91,7 @@ export default function Resume() {
                 <Text fontWeight={600}>{ cert.certificate }</Text>
                 <Text fontStyle="italic">{ cert.issuedBy }</Text>
                 <Button
-                    as="a" href={ cert.credential } isExternal
+                    as="a" href={ cert.credential } target="_blank" rel="noopener noreferrer"
                     colorScheme="blackAlpha"
                     borderRadius="full" height="100%" paddingX="7px"
                     fontSize="80%">

@@ -1,8 +1,9 @@
 import "./App.css";
 import {
-  BrowserRouter,
+  // BrowserRouter,
+  HashRouter,
   Route,
-  Routes
+  Routes,
 } from "react-router-dom";
 import Home from "./components/Home.js";
 import Header from './components/Header.js';
@@ -33,16 +34,29 @@ function App() {
 
   return (
       <div className="App">
-        <BrowserRouter>
-      <Header navItems={navItems}/>
-      <SocialMedia/>
+        <HashRouter>
+          <Header navItems={navItems}/>
+          <SocialMedia/>
           <Routes>
-            <Route path="/" element={<Home navItems={navItems}/>} />
-            <Route path="/aboutme" element={<AboutMe/>} />
-            <Route path="/resume" element={<Resume/>} />
-            <Route path="/contactme" element={<ContactMe/>} />
+              <Route path="/" element={<Home navItems={navItems}/>} />
+              <Route exact path="/aboutme" element={<AboutMe/>} />
+              <Route exact path="/resume" element={<Resume/>} />
+              <Route exact path="/contactme" element={<ContactMe/>} />
           </Routes>
+        </HashRouter>
+        {/*
+        // Not using BrowerRouter because GitHub sever does not support
+        <BrowserRouter>
+          <Header navItems={navItems}/>
+          <SocialMedia/>
+              <Routes>
+                <Route path="/" element={<Home navItems={navItems}/>} />
+                <Route path="/aboutme" element={<AboutMe/>} />
+                <Route path="/resume" element={<Resume/>} />
+                <Route path="/contactme" element={<ContactMe/>} />
+              </Routes>
         </BrowserRouter>
+        */}
       </div>
   );
 }
