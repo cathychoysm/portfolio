@@ -5,7 +5,6 @@ import {
     certificates
 } from "../data/ResumeData";
 import {
-    Box,
     Button,
     Card,
     CardBody,
@@ -103,7 +102,7 @@ export default function Resume() {
     })
 
     return (
-        <Box
+        <VStack
             bg="linear-gradient(
                 to bottom right,
                 #FFE5E5,
@@ -197,6 +196,6 @@ export default function Resume() {
                         </CardBody>
                     </Card>
             </Grid>
-        </Box>
+        </VStack>
     )
 }
