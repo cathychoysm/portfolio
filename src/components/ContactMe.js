@@ -8,7 +8,8 @@ import {
     Heading,
     Input,
     Textarea,
-    VStack
+    VStack,
+	useDisclosure
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
@@ -16,9 +17,18 @@ import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser"
+import ContactMeAlert from "./ContactMeAlert";
+import { useState } from "react";
 
 export default function ContactMe() {
-    const formik = useFormik({
+	const {isOpen, onOpen, onClose} = useDisclosure();
+	const [alert, setAlert] = useState({
+		status: "",
+		title: "",
+		description: ""
+	});
+
+	const formik = useFormik({
         initialValues: {
             name: "",
             email: "",
@@ -26,18 +36,38 @@ export default function ContactMe() {
         },
         validationSchema: Yup.object({
             name: Yup.string().required("Required"),
-            email: Yup.string().email("Please enter a valid email.").required("Let me know you email so that I can get back to you"),
+            email: Yup.string().email("Please enter a valid email.").required("Let me know your email so that I can get back to you"),
             message: Yup.string().max(200, "Please make it shorter than 200 words").required("Please leave some message.")
         }),
         onSubmit: (values, { resetForm }) => {
-            try {
+			if (process.env.NODE_ENV !== "production") {
+				setAlert({
+					status: "success",
+					title: "Message Sent!",
+					description: `Thanks for reaching out, ${values.name}. I will get back to you as soon as possible.`
+				});
+				onOpen();
+				return
+			}
+			try {
                 emailjs.send("service_b1vp4yl", "template_a08qdjo", values, "tsxuPEUxJhuY-N4xM")
                 .then(() => {
-                    alert(`Thanks for reaching out, ${values.name}. I will get back to you as soon as possible.`);
-                    resetForm();
+					setAlert({
+						status: "success",
+						title: "Message Sent!",
+						description: `Thanks for reaching out, ${values.name}. I will get back to you as soon as possible.`
+					});
+					onOpen();
+					resetForm();
                 })
             } catch(err) {
-                alert(`Failed to sent: ${err} Please try again later.`)
+                alert(`Failed to sent: ${err} Please try again later.`);
+				setAlert({
+					status: "error",
+					title: "Failed to sent:",
+					description: `${err}. Please try again later.`
+				});
+				onOpen();
             }
         }
     });
@@ -78,11 +108,13 @@ export default function ContactMe() {
                                     "email"
                                     "message"
                                     "submit"
+									"alert"
                                 `,
                                 md: `
                                     "name email"
                                     "message message"
                                     "submit submit"
+									"alert alert"
                                 `
                             }}
                             gap="3vh"
@@ -138,6 +170,7 @@ export default function ContactMe() {
                                 isDisabled={!(formik.dirty && formik.isValid)}>
                                     Send
                             </Button>
+							{isOpen && <ContactMeAlert status={ alert.status } title={ alert.title } description={ alert.description } onClose={ onClose }/>}
                         </Grid>
                 </VStack>
         </VStack>
