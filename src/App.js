@@ -10,6 +10,7 @@ import Header from './components/Header.js';
 import SocialMedia from "./components/SocialMedia.js";
 import AboutMe from "./components/AboutMe.js";
 import Resume from "./components/Resume.js";
+import Projects from "./components/Projects.js";
 import ContactMe from "./components/ContactMe.js";
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
         path: "/resume",
         name: "Resume"
     },
+	{
+        path: "/projects",
+        name: "Projects"
+    },
     {
         path: "/contactme",
         name: "Contact Me"
@@ -41,6 +46,7 @@ function App() {
               <Route path="/" element={<Home navItems={navItems}/>} />
               <Route exact path="/aboutme" element={<AboutMe/>} />
               <Route exact path="/resume" element={<Resume/>} />
+              <Route exact path="/projects" element={<Projects/>} />
               <Route exact path="/contactme" element={<ContactMe/>} />
           </Routes>
         </HashRouter>

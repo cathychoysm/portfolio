@@ -38,7 +38,7 @@ export default function Header(props) {
 
     const navListWithClass = props.navItems.map(navItem => {
         return (
-            <Link to={ navItem.path } className="Nav-Items">
+            <Link to={ navItem.path } key={ navItem.path } className="Nav-Items">
                 { navItem.name }
             </Link>
         );

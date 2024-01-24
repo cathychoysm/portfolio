@@ -1,13 +1,13 @@
 import JsLogo from "../images/logo_javascript.png";
 import HtmlLogo from "../images/logo_html.png";
 import CssLogo from "../images/logo_css.png";
+import TsLogo from "../images/logo_typescript.png";
 import ReactLogo from "../images/logo_react.png";
+import TailwindLogo from "../images/logo_tailwind_css.png";
 import ChakraUiLogo from "../images/logo_chakra_ui.png";
 import FigmaLogo from "../images/logo_figma.svg";
 import SqlLogo from "../images/logo_sql.png";
 import BigQueryLogo from "../images/logo_bigquery.svg";
-import GsheetsLogo from "../images/logo_google_sheets.png";
-import ExcelLogo from "../images/logo_ms_excel.png";
 import GaLogo from "../images/logo_google_analytics.png";
 import DbtLogo from "../images/logo_dbt.png";
 import AppsScriptLogo from "../images/logo_apps_script.png";
@@ -30,9 +30,17 @@ export const technologies = [
         name: "CSS",
         logo: CssLogo
     },
+	{
+        name: "TypeScript",
+        logo: TsLogo
+    },
     {
         name: "React.js",
         logo: ReactLogo
+    },
+	{
+        name: "Tailwind CSS",
+        logo: TailwindLogo
     },
     {
         name: "Chakra UI",
@@ -49,14 +57,6 @@ export const technologies = [
     {
         name: "BigQuery (GCP)",
         logo: BigQueryLogo
-    },
-    {
-        name: "Google Sheets",
-        logo: GsheetsLogo
-    },
-    {
-        name: "Microsoft Excel",
-        logo: ExcelLogo
     },
     {
         name: "Google Analytics 4",
