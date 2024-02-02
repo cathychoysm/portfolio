@@ -81,7 +81,7 @@ export default function Projects() {
 				{
 					projectData.length > 0
 						? <Grid
-							templateColumns={{ base: "repeat(2, minmax(30px,20vh))", md: "repeat(4, minmax(30px,20vh))" }}
+							templateColumns={{ base: "repeat(1, minmax(30px,70vw))", md: "repeat(4, minmax(30px,20vh))" }}
 							gap="30px"
 							alignItems="center" justifyItems="center">
 								<ProjectCards projectData={ projectData }/>

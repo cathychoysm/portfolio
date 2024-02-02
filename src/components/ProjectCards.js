@@ -38,6 +38,7 @@ export default function ProjectCards(props) {
 			<Card
 				key={ data.title }
 				borderRadius="10px" boxShadow="2px 2px 5px #838283"
+				height="100%"
 				_hover={{ transform: "translate(0,-10px)", boxShadow: "5px 5px 5px #838283"}}>
 					<Image
 						src={ data.image } fallbackSrc={ FallbackImg } alt={ data.title }
