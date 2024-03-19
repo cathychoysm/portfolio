@@ -4,6 +4,7 @@ import CssLogo from "../images/logo_css.png";
 import TsLogo from "../images/logo_typescript.png";
 import ReactLogo from "../images/logo_react.png";
 import TailwindLogo from "../images/logo_tailwind_css.png";
+import MuiLogo from "../images/logo_mui.png";
 import ChakraUiLogo from "../images/logo_chakra_ui.png";
 import FigmaLogo from "../images/logo_figma.svg";
 import SqlLogo from "../images/logo_sql.png";
@@ -30,7 +31,7 @@ export const technologies = [
         name: "CSS",
         logo: CssLogo
     },
-	{
+		{
         name: "TypeScript",
         logo: TsLogo
     },
@@ -38,10 +39,14 @@ export const technologies = [
         name: "React.js",
         logo: ReactLogo
     },
-	{
+		{
         name: "Tailwind CSS",
         logo: TailwindLogo
     },
+		{
+			name: "Material UI",
+			logo: MuiLogo
+		},
     {
         name: "Chakra UI",
         logo: ChakraUiLogo
@@ -81,7 +86,15 @@ export const technologies = [
 ];
 
 export const employmentHistory = [
-    {
+		{
+				company: "Apoidea",
+				position: "Freelancer",
+				location: "Hong Kong",
+				from: "Feb 2024",
+				to: "Present",
+				logo: ApoideaLogo
+		},
+		{
         company: "Apoidea",
         position: "Data Analyst, Data & Growth",
         location: "Hong Kong",
