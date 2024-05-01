@@ -10,7 +10,6 @@ import {
   keyframes,
 } from "@chakra-ui/react";
 import CartoonGirl from "../images/cartoon_girl.png";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Home(props) {
@@ -46,7 +45,7 @@ export default function Home(props) {
 
   const navList = props.navItems.map((navItem) => {
     return (
-      <Link to={navItem.path} key={navItem.name}>
+      <a href={`/#${navItem.id}`} key={navItem.name}>
         <Box
           bg="radial-gradient(
                         circle at 25% 25%,
@@ -75,12 +74,13 @@ export default function Home(props) {
             {navItem.name}
           </Text>
         </Box>
-      </Link>
+      </a>
     );
   });
 
   return (
     <Grid
+      id="home"
       templateAreas={`
                 "popup"
                 "card"
