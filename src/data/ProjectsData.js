@@ -5,7 +5,7 @@ import StarRating from "../images/star-rating-component.png";
 
 export const projectData = [
   {
-    url: "https://google-calendar-clone-eqhbjt3fe-cathy-choys-projects.vercel.app/",
+    url: "https://google-calendar-clone-tau.vercel.app/",
     title: "Google Calendar Clone",
     description:
       "A web app that provides users with a familiar scheduling and event management experience by mimicking the core functionalities and user interface of Google Calendar.",
