@@ -1,75 +1,7 @@
-import { Center, Grid, Text, VStack } from "@chakra-ui/react";
+import { Center, HStack, VStack } from "@chakra-ui/react";
 import ProjectCards from "./ProjectCards";
-import { projectUrls } from "../data/ProjectsData";
-import { useEffect, useState } from "react";
 
 export default function Projects() {
-  const [projectData, setProjectData] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = () => {
-      let data = projectUrls.map(async (url) => {
-        try {
-          // fetch website html
-          const web = await fetch(url);
-          const html = await web.text();
-          const parser = new DOMParser();
-          const parsedHtml = parser.parseFromString(html, "text/html");
-          const title =
-            parsedHtml
-              .querySelector('meta[property="og:title"]')
-              ?.getAttribute("content") || "";
-          const description =
-            parsedHtml
-              .querySelector('meta[property="og:description"]')
-              ?.getAttribute("content") || "";
-          const image =
-            parsedHtml
-              .querySelector('meta[property="og:image"]')
-              ?.getAttribute("content") || "";
-          // fetch data.json
-          const webData = await fetch(`${url}/data.json`);
-          const webDataJson = await webData.json();
-          const repoUrl = webDataJson.repoUrl;
-          const techTags = webDataJson.techTags;
-          // set fetched data
-          return {
-            url,
-            title,
-            description,
-            image,
-            repoUrl,
-            techTags,
-          };
-        } catch (err) {
-          setError(err);
-        }
-      });
-      Promise.all(data).then((results) => {
-        setProjectData(results.filter((item) => item));
-      });
-    };
-    fetchData();
-  }, []);
-
-  const ErrorMessage = () => {
-    return (
-      <Text
-        textAlign="center"
-        fontWeight="600"
-        color="white"
-        bgColor="purple.200"
-        padding="10px"
-        marginTop="200px"
-        borderRadius="10px"
-      >
-        {error === null
-          ? "Loading..."
-          : "[Error: Failed to fetch projects. {error}]"}
-      </Text>
-    );
-  };
   return (
     <VStack
       id="projects"
@@ -95,21 +27,9 @@ export default function Projects() {
       >
         Projects
       </Center>
-      {projectData.length > 0 ? (
-        <Grid
-          templateColumns={{
-            base: "repeat(1, minmax(30px,70vw))",
-            md: "repeat(4, minmax(30px,20vh))",
-          }}
-          gap="30px"
-          alignItems="center"
-          justifyItems="center"
-        >
-          <ProjectCards projectData={projectData} />
-        </Grid>
-      ) : (
-        <ErrorMessage />
-      )}
+      <HStack gap="30px" wrap="wrap" alignItems="center" justifyContent="start">
+        <ProjectCards />
+      </HStack>
     </VStack>
   );
 }
