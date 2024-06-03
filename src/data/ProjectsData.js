@@ -3,13 +3,6 @@ import GoogleSearchClone from "../images/google-search-clone.png";
 import MultiStepForm from "../images/multi-step-form.png";
 import StarRating from "../images/star-rating-component.png";
 
-export const projectUrls = [
-  "https://google-calendar-clone-eqhbjt3fe-cathy-choys-projects.vercel.app/",
-  "https://search-clone-69618.web.app/",
-  "https://cathychoysm.github.io/project-multi-step-form/",
-  "https://cathychoysm.github.io/project-star-rating-component/",
-];
-
 export const projectData = [
   {
     url: "https://google-calendar-clone-eqhbjt3fe-cathy-choys-projects.vercel.app/",
